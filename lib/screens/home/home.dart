@@ -40,12 +40,35 @@ class _HomeState extends State<Home> {
         child: ListView(
           children: [
             DrawerHeader(
-              child: Text("Drawer header"),
-              decoration: BoxDecoration(color: Colors.blue),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FlutterLogo(
+                    size: 74,
+                  ),
+                  // Text(
+                  //   "Allcalculators",
+                  //   style: TextStyle(color: Colors.white, fontSize: 24),
+                  // ),
+                ],
+              ),
+              decoration: BoxDecoration(color: Color(0xFF9c47ff)),
             ),
             ...screens.asMap().entries.map((screen) {
+              final selected = screen.key == currentPage;
               return ListTile(
-                title: Text(screen.value.title),
+                title: Text(
+                  screen.value.title,
+                  style: TextStyle(
+                      color: selected ? Color(0xFF661FFF) : Colors.black),
+                ),
+                leading: Icon(
+                  screen.value.iconData,
+                  color: selected ? Color(0xFF661FFF) : Colors.black45,
+                ),
+                selected: selected,
+                selectedTileColor: Color(0xFF661FFF).withOpacity(0.12),
                 onTap: () {
                   Navigator.pop(context);
                   setState(() {
