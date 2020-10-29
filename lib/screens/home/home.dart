@@ -1,18 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:allcalculators/models/ui.dart';
 import 'package:allcalculators/screens/math/math.dart';
 import 'package:allcalculators/screens/welcome/welcome.dart';
-import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
-}
-
-class CustomScreen {
-  final Widget widget;
-  final IconData iconData;
-  final String title;
-  CustomScreen(
-      {@required this.widget, @required this.iconData, @required this.title});
 }
 
 class _HomeState extends State<Home> {
@@ -25,7 +18,7 @@ class _HomeState extends State<Home> {
         widget: MathScreen(), iconData: Icons.calculate, title: "Math"),
   ];
 
-  int currentPage = 0;
+  int currentPage = 1;
 
   Widget renderScreen(BuildContext context) {
     return screens[currentPage].widget;
@@ -34,7 +27,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: renderScreen(context),
       drawer: Drawer(
         child: ListView(
