@@ -148,30 +148,37 @@ class Addition extends StatelessWidget {
                     builder: (context) => StepByStepSolution(
                           steps: [
                             Step(
-                                image:
-                                    AssetImage('$AdditionImagePath/step1.png'),
-                                explanation: "Some explanation 1"),
+                              key: 1,
+                              image: AssetImage('$AdditionImagePath/step1.png'),
+                              explanation: "Some explanation 1",
+                            ),
                             Step(
+                                key: 2,
                                 image:
                                     AssetImage('$AdditionImagePath/step2.png'),
                                 explanation: "Some explanation 2"),
                             Step(
+                                key: 3,
                                 image:
                                     AssetImage('$AdditionImagePath/step3.png'),
                                 explanation: "Some explanation 3"),
                             Step(
+                                key: 4,
                                 image:
                                     AssetImage('$AdditionImagePath/step4.png'),
                                 explanation: "Some explanation 4"),
                             Step(
+                                key: 5,
                                 image:
                                     AssetImage('$AdditionImagePath/step5.png'),
                                 explanation: "Some explanation 5"),
                             Step(
+                                key: 6,
                                 image:
                                     AssetImage('$AdditionImagePath/step6.png'),
                                 explanation: "Some explanation 6"),
                             Step(
+                                key: 7,
                                 image:
                                     AssetImage('$AdditionImagePath/step7.png'),
                                 explanation: "Some explanation 7"),
@@ -201,11 +208,20 @@ class StepByStepSolution extends StatefulWidget {
 class Step {
   final AssetImage image;
   final String explanation;
+  final int key;
 
-  Step({@required this.image, @required this.explanation});
+  Step({@required this.image, @required this.explanation, @required this.key});
 }
 
 class _StepByStepSolutionState extends State<StepByStepSolution> {
+  CarouselController buttonCarouselController = CarouselController();
+
+  @override
+  void initState() {
+    widget.steps.sort((a, b) => a.key - b.key);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -214,16 +230,18 @@ class _StepByStepSolutionState extends State<StepByStepSolution> {
                 .applyTo(BouncingScrollPhysics()),
             slivers: [
           SliverAppBar(),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            sliver: SliverToBoxAdapter(
-              child: CarouselSlider(
-                options: CarouselOptions(height: 400.0),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Text("Explaination"),
+              CarouselSlider(
+                carouselController: buttonCarouselController,
+                options:
+                    CarouselOptions(height: 400.0, enableInfiniteScroll: false),
                 items: widget.steps.map((step) {
                   return Image(image: step.image);
                 }).toList(),
               ),
-            ),
+            ]),
           )
         ]));
   }
