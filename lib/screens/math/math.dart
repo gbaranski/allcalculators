@@ -38,19 +38,19 @@ class MathScreen extends StatelessWidget {
           difficulty: 1,
         ),
         MathView(
-          widget: Addition(),
+          widget: Subtraction(),
           iconData: MdiIcons.minus,
           title: "Subtraction",
           difficulty: 1,
         ),
         MathView(
-          widget: Addition(),
+          widget: Multiplication(),
           iconData: MdiIcons.multiplication,
           title: "Multiplication",
           difficulty: 1,
         ),
         MathView(
-          widget: Addition(),
+          widget: Division(),
           iconData: MdiIcons.division,
           title: "Division",
           difficulty: 1,
