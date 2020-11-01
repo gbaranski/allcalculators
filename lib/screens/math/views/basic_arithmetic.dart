@@ -140,57 +140,6 @@ class Addition extends StatelessWidget {
         ),
         Divider(),
         Text("For example 432344+238443 = 670787"),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => StepByStepSolution(
-                          steps: [
-                            Step(
-                              key: 1,
-                              image: AssetImage('$AdditionImagePath/step1.png'),
-                              explanation: "Some explanation 1",
-                            ),
-                            Step(
-                                key: 2,
-                                image:
-                                    AssetImage('$AdditionImagePath/step2.png'),
-                                explanation: "Some explanation 2"),
-                            Step(
-                                key: 3,
-                                image:
-                                    AssetImage('$AdditionImagePath/step3.png'),
-                                explanation: "Some explanation 3"),
-                            Step(
-                                key: 4,
-                                image:
-                                    AssetImage('$AdditionImagePath/step4.png'),
-                                explanation: "Some explanation 4"),
-                            Step(
-                                key: 5,
-                                image:
-                                    AssetImage('$AdditionImagePath/step5.png'),
-                                explanation: "Some explanation 5"),
-                            Step(
-                                key: 6,
-                                image:
-                                    AssetImage('$AdditionImagePath/step6.png'),
-                                explanation: "Some explanation 6"),
-                            Step(
-                                key: 7,
-                                image:
-                                    AssetImage('$AdditionImagePath/step7.png'),
-                                explanation: "Some explanation 7"),
-                          ],
-                        ),
-                    settings: RouteSettings(name: "math/addition/stepbystep")));
-          },
-          child: Text(
-            "Show step by step",
-            style: TextStyle(color: Colors.blue),
-          ),
-        ),
       ],
     );
   }
