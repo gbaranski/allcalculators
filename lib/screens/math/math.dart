@@ -100,7 +100,8 @@ class MathScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: AlwaysScrollableScrollPhysics().applyTo(BouncingScrollPhysics()),
+      physics: const AlwaysScrollableScrollPhysics()
+          .applyTo(BouncingScrollPhysics()),
       slivers: [
         SliverAppBar(
           title: Text("Math"),

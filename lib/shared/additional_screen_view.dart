@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:allcalculators/screens/practice/practice.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -16,9 +17,13 @@ class AdditionalScreenView extends StatefulWidget {
   final List<Widget> children;
   final String title;
   final MathForm mathForm;
+  final Practice practice;
 
   AdditionalScreenView(
-      {@required this.children, @required this.title, this.mathForm});
+      {@required this.children,
+      @required this.title,
+      this.mathForm,
+      this.practice});
 
   @override
   _AdditionalScreenViewState createState() => _AdditionalScreenViewState();
@@ -96,6 +101,22 @@ class _AdditionalScreenViewState extends State<AdditionalScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: widget.practice != null
+          ? FloatingActionButton.extended(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        settings:
+                            RouteSettings(name: "${widget.title}_practice"),
+                        builder: (context) => PracticeView(
+                              practice: widget.practice,
+                            )));
+              },
+              label: Text("Practice"),
+              icon: Icon(Icons.science),
+            )
+          : null,
       body: CustomScrollView(
         physics:
             AlwaysScrollableScrollPhysics().applyTo(BouncingScrollPhysics()),

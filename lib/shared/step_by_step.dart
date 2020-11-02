@@ -31,7 +31,7 @@ class _StepByStepSolutionState extends State<StepByStepSolution> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
-            physics: AlwaysScrollableScrollPhysics()
+            physics: const AlwaysScrollableScrollPhysics()
                 .applyTo(BouncingScrollPhysics()),
             slivers: [
           SliverAppBar(),
